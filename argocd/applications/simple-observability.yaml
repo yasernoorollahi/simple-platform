@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-observability
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/yasernoorollahi/simple-platform.git
+    targetRevision: HEAD
+    path: simple-observability
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: simple-observability
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
