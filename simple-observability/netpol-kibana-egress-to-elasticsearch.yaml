@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kibana-egress-to-elasticsearch
+  namespace: simple-observability
+spec:
+  podSelector:
+    matchLabels:
+      kibana.k8s.elastic.co/name: simple-kibana
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              elasticsearch.k8s.elastic.co/cluster-name: simple-es
+      ports:
+        - protocol: TCP
+          port: 9200
