@@ -8,3 +8,17 @@ spec:
   count: 1
   elasticsearchRef:
     name: simple-es
+  podTemplate:
+    spec:
+      containers:
+        - name: kibana
+          resources:
+            requests:
+              memory: 512Mi
+              cpu: 250m
+            limits:
+              memory: 1Gi
+              cpu: 500m
+          env:
+            - name: NODE_OPTIONS
+              value: '--max-old-space-size=512'
