@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - elasticsearch.yaml
   - kibana.yaml
+  - simple-es-vpa.yaml
   - network/baseline
   - network/elasticsearch
   - network/kibana

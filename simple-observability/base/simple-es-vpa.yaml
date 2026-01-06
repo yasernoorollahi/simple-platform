@@ -1,0 +1,26 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: simple-es-vpa
+  namespace: simple-observability
+spec:
+  targetRef:
+    apiVersion: elasticsearch.k8s.elastic.co/v1
+    kind: Elasticsearch
+    name: simple-es
+
+  updatePolicy:
+    updateMode: Auto
+
+  resourcePolicy:
+    containerPolicies:
+      - containerName: elasticsearch
+        minAllowed:
+          cpu: 500m
+          memory: 1Gi
+        maxAllowed:
+          cpu: '2'
+          memory: 4Gi
+        controlledResources:
+          - cpu
+          - memory
