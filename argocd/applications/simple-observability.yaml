@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/yasernoorollahi/simple-platform.git
     targetRevision: HEAD
-    path: simple-observability
+    path: simple-observability/overlays/dev
 
   destination:
     server: https://kubernetes.default.svc
